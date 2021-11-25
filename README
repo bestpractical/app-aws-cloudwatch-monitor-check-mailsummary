@@ -1,0 +1,3 @@
+NAME
+    App::AWS::CloudWatch::Monitor::Check::MailSummary - gather mail traffic
+    summary data
