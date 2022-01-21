@@ -1,0 +1,13 @@
+MYMETA.*
+blib/
+/nytprof.out*
+/.prove
+*~
+*.swp
+*.swo
+cover_db/
+Makefile
+Makefile.old
+MANIFEST.bak
+App-AWS-CloudWatch-Monitor-Check-MailSummary*
+pm_to_blib
