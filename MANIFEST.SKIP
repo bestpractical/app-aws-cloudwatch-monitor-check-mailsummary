@@ -37,6 +37,8 @@ MYMETA\.json
 MYMETA\.yml$
 \.tar\.gz$$
 
+README.md
+
 # Author tests and files
 996_perl-tidy.t
 997_perl-critic.t
