@@ -1,0 +1,52 @@
+# NAME
+
+App::AWS::CloudWatch::Monitor::Check::MailSummary - gather mail traffic summary data
+
+# SYNOPSIS
+
+    my $plugin  = App::AWS::CloudWatch::Monitor::Check::MailSummary->new();
+    my $metrics = $plugin->check( $args_arrayref );
+
+    aws-cloudwatch-monitor --check MailSummary --maillog-path /var/log/mail.log --maillog-time 23:00
+
+# DESCRIPTION
+
+`App::AWS::CloudWatch::Monitor::Check::MailSummary` is a [App::AWS::CloudWatch::Monitor::Check](https://metacpan.org/pod/App::AWS::CloudWatch::Monitor::Check) module which gathers mail traffic summary data for a specified hour.
+
+# METRICS
+
+Data for this check is read from [pflogsumm(1)](http://man.he.net/man1/pflogsumm).  The following metrics are returned.
+
+- mail-Received
+- mail-Delivered
+- mail-Deferred
+- mail-Bounced
+- mail-Rejected
+
+# METHODS
+
+- check
+
+    Gathers the metric data and returns an arrayref of hashrefs with keys `MetricName`, `Unit`, `RawValue`.
+
+# ARGUMENTS
+
+- --maillog-path &lt;/path/to/maillog>
+
+    The `--maillog-path` argument is required and defines the full path, with filename, where the maillog can be read.
+
+        aws-cloudwatch-monitor --check MailSummary --maillog-path /var/log/mail.log
+
+- --maillog-time &lt;hh:mm>
+
+    The optional `--maillog-time` argument may be defined to specify which hour to get mailstats for.
+
+        aws-cloudwatch-monitor --check MailSummary --maillog-path /var/log/mail.log --maillog-time 23:00
+
+    `maillog-time` must be formatted 24hr and minute (hh:mm).
+
+    If `maillog-time` isn't defined, mailstats are gathered for the previous hour.
+
+# DEPENDENCIES
+
+`App::AWS::CloudWatch::Monitor::Check::MailSummary` depends on the external program, [pflogsumm(1)](http://man.he.net/man1/pflogsumm).
